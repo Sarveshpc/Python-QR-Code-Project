@@ -1,0 +1,27 @@
+
+#import cv2
+cap = cv2.videoCapture(a)
+faceCasade = cv2.CascadeClassfier('haarcascade_frontalface_default.xml')
+while True
+    sucess,img = cap.read()
+    faces = faceCascade.detectMultiScale(img,1.2,4)
+    for (x, y, w, h) in faces:
+        ROI = img[y:y+h, x:x+w]
+        blur = cv2.GaussianBlur(ROI, (91,91),0)
+        img[y:y+h, x:x+w] = blur
+    if faces==():
+        cv2.putText(img,'No Face Found!',(20,50),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255))
+    cv2.imshow('Face Blur',img)
+    if cv2.waitkey(1) & 0xff==ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+
+Traceback (most recent call last):
+  File "main.py", line 2, in <module>
+    cap = cv2.VideoCapture(0)
+NameError: name 'cv2' is not defined
+
+
+** Process exited - Return Code: 1 **
+Press Enter to exit terminal
